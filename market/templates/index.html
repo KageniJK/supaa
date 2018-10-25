@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{%block content%}
+<div class="container" id="bod">
+  <div class="row">
+    {% for product in products%}
+    <!--Displaying the products-->
+    <div class="card col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-4 ">
+        <img class="card-img-top" src="{{product.picture.url}}" alt="{{product.name}}">
+        <div class="card-body row">
+          <div class="col-md-6">{{product.name}} </div>
+          <div class="col-md-6">KES.{{product.price}}</div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="row">
+      <h2 class="text-center">Products coming soon!!</h2>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{%endblock%}

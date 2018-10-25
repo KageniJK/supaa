@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for item in search %}
+    <!--Displaying the products-->
+    <div class="card col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-4 ">
+        <img class="card-img-top" src="{{item.picture.url}}" alt="{{item.name}}">
+        <div class="card-body row">
+          <div class="col-md-6">{{item.name}} </div>
+          <div class="col-md-6">KES.{{item.price}}</div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="row">
+      <h2 class="text-center">Could not find that product</h2>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
