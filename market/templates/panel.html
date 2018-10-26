@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newProductModal">Add Product</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stockUpdateModal">Add stock</button>
+        <button>Sell Products</button>
+    </div>
+
+    <div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="postLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postLabel">New post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'panel'%}" method="post" enctype="multipart/form-data">
+          {%csrf_token%}
+          {% bootstrap_form product_form%}
+          <input type="submit" class="btn btn-success btn-lg" value="Add Product">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="modal fade" id="stockUpdateModal" tabindex="-1" role="dialog" aria-labelledby="postLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="stockLabel">New post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'panel'%}" method="post">
+          {%csrf_token%}
+          {% bootstrap_form stock_form%}
+          <input type="submit" class="btn btn-success btn-lg" value="Stock">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
