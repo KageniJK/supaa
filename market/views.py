@@ -33,12 +33,12 @@ def panel(request):
         if stock_form.is_valid():
             item = stock_form.cleaned_data['product']
             if Stock.objects.get(product=item):
-                stocked = Stock.objects.get(product=item)
-                stocked.stock += stock_form.cleaned_data['stock']
-                stocked.save()
-            else:
-                stock = stock_form.save(commit=False)
-                stock.save()
+                deleter = Stock.objects.get(product=item)
+                deleter.delete()
+            stock = stock_form.save(commit=False)
+            stock.product = item
+            stock.stock = stock_form.cleaned_data['stock']
+            stock.save()
     else:
         product_form = ProductForm()
         stock_form = StockForm()

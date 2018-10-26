@@ -39,7 +39,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{% url 'panel'%}" method="post">
+        <form action="{% url 'panel'%}" method="post" enctype="multipart/form-data">
           {%csrf_token%}
           {% bootstrap_form stock_form%}
           <input type="submit" class="btn btn-success btn-lg" value="Stock">
