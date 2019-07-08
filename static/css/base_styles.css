@@ -1,7 +1,9 @@
 .img-size{
     height: 250px;
+    width: 250px;
 }
 
 #bod{
     margin-bottom: 20px;
+    background-color: #000000;
 }
